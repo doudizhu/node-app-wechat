@@ -12,6 +12,17 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/login',
+      name: 'login',
+      // 懒加载引入，箭头函数
+      component: () => import('./views/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('./views/Register.vue')
     }
   ]
 })
