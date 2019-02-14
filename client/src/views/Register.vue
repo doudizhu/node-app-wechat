@@ -29,10 +29,17 @@
             v-model='user.password2'
             type='password'
           )
+        
+        .btn_wrap
+          YButton(
+            :disabled='isDisabled'
+            @click='registerClick'
+          ) 注册
 </template>
 
 <script>
 import InputGroup from '../components/InputGroup'
+import YButton from '../components/YButton'
 export default {
     name: 'register',
     data() {
@@ -47,6 +54,27 @@ export default {
     },
     components: {
       InputGroup,
+      YButton,
+    },
+    computed: {
+      isDisabled(){
+        if(this.user.name && this.user.email && this.user.password && this.user.password2)  return false
+        else return true
+      }
+    },
+    methods: {
+      registerClick(){
+        var reg = /^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+        if (!reg.test(this.user.email)) {
+          alert("请输入合法的邮箱地址！")
+          return;
+        }
+
+        if(this.user.password !== this.user.password2){
+          alert('两次密码不一致')
+          return
+        }
+      }
     },
 }
 </script>
@@ -85,4 +113,10 @@ export default {
   font-size: 22px;
   text-align: center;
 }
+
+.content,
+.btn_wrap{
+  margin-top: 30px;
+}
+
 </style>

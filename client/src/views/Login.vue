@@ -15,6 +15,11 @@
           v-model='user.password'
           type='password'
         )
+      .btn_wrap
+        YButton(
+          :disabled='isDisabled'
+          @click='loginClick'
+        ) 登录
     .footer_wrap
       | |
       button.register(@click='$router.push("/register")') 注册账号
@@ -23,6 +28,7 @@
 
 <script>
 import InputGroup from '../components/InputGroup'
+import YButton from '../components/YButton'
 export default {
     name: 'login',
     data() {
@@ -35,6 +41,22 @@ export default {
     },
     components: {
       InputGroup,
+      YButton,
+    },
+    computed: {
+      isDisabled(){
+        if(this.user.email && this.user.password)  return false
+        else return true
+      }
+    },
+    methods: {
+      loginClick(){
+        var reg = /^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+        if (!reg.test(this.user.email)) {
+          alert("请输入合法的邮箱地址！");
+          return;
+        }
+      }
     },
 }
 </script>
@@ -70,4 +92,11 @@ export default {
   background-color: transparent;
   color: #7b8ca9;
 }
+
+.content,
+.btn_wrap{
+  margin-top: 30px;
+}
+
+
 </style>
