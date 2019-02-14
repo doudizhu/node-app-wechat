@@ -3,6 +3,18 @@
     .title 用户登录
     .content
       //- 表单
+      form
+        InputGroup(
+          label='账号'
+          placeholder='请填写邮箱'
+          v-model='user.email'
+        )
+        InputGroup(
+          label='密码'
+          placeholder='请填写密码'
+          v-model='user.password'
+          type='password'
+        )
     .footer_wrap
       | |
       button.register(@click='$router.push("/register")') 注册账号
@@ -10,10 +22,19 @@
 </template>
 
 <script>
+import InputGroup from '../components/InputGroup'
 export default {
     name: 'login',
+    data() {
+      return {
+        user: {
+          email: '',
+          password: '',
+        }
+      }
+    },
     components: {
-
+      InputGroup,
     },
 }
 </script>
