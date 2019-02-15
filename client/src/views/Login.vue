@@ -29,6 +29,7 @@
 <script>
 import InputGroup from '../components/InputGroup'
 import YButton from '../components/YButton'
+import jwt_decode from 'jwt-decode'
 export default {
     name: 'login',
     data() {
@@ -65,7 +66,14 @@ export default {
               token,
             } = res.data
             // 存储到ls
-            localStorage.setItem('wxToken',token)
+            localStorage.setItem('wxpyqToken',token)
+
+            // 解析
+            const decode = jwt_decode(token)
+            // console.log(decode)
+
+            // 存储到vuex中
+            this.$store.dispatch('setUser',decode)
 
             // 页面跳转
             this.$router.push('/')
