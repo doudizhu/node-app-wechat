@@ -56,6 +56,20 @@ export default {
           alert("请输入合法的邮箱地址！");
           return;
         }
+        // 实现登录
+        this.$axios.post('/api/users/login',this.user)
+          .then(res => {
+            // console.log(res)
+            // 存储token
+            const {
+              token,
+            } = res.data
+            // 存储到ls
+            localStorage.setItem('wxToken',token)
+
+            // 页面跳转
+            this.$router.push('/')
+          })
       }
     },
 }
