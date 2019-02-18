@@ -1,3 +1,13 @@
 <template lang="pug">
-    div 发现
+    div
+        Header(title='发现')
 </template>
+
+<script>
+import Header from '../components/Header'
+export default {
+    components: {
+        Header,
+    },
+}
+</script>

@@ -1,3 +1,13 @@
 <template lang="pug">
-    div 我的
+    div
+        Header(title='我')
 </template>
+
+<script>
+import Header from '../components/Header'
+export default {
+    components: {
+        Header,
+    },
+}
+</script>
