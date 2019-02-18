@@ -12,12 +12,9 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
+      redirect: '/chats',
       component: Index,
       children: [
-        {
-          path: '',
-          redirect: '/chats'
-        },
         {
           path: '/chats',
           name: 'chats',
