@@ -1,28 +1,20 @@
 <template lang="pug">
     .tabbar
-        a.tab-item
+        router-link.tab-item(
+            v-for='(item,index) in data'
+            :key='index'
+            :to='item.path'
+            active-class='is-selected'
+        )
             .tab-item-icon
-                i.fa.fa-comment
-            .tab-item-label 微信
-        a.tab-item
-            .tab-item-icon
-                i.fa.fa-address-book
-            .tab-item-label 通讯录
-        a.tab-item
-            .tab-item-icon
-                i.fa.fa-compass
-            .tab-item-label 发现
-        a.tab-item
-            .tab-item-icon
-                i.fa.fa-user
-            .tab-item-label 我的
-            
+                i(:class='"fa fa-"+item.icon')
+            .tab-item-label {{item.title}}
 </template>
 
 <script>
 export default {
     props: {
-        
+        data: Array,
     }
 }
 </script>
