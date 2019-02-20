@@ -14,6 +14,7 @@
                     v-for='(friend,index) in friendsList'
                     :key='friend._id'
                     :user='friend'
+                    @click='cellClick(friend)'
                 )
             //- 下面
             .count_wrap
@@ -55,6 +56,10 @@ export default {
             this.friendsList = this.allFriends.filter(friend => {
                 return friend.name.indexOf(this.search_value) != -1
             })
+        },
+        cellClick(friend){
+            // console.log(friend)
+            this.$router.push('/information')
         },
     },
 }
