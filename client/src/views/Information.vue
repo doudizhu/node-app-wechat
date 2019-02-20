@@ -9,11 +9,16 @@
             InfoCell(
                 :userInfo='targetUser'
             )
+            .btn_wrapper
+                Button(
+                    @click='$router.push({name:"chat",params:{user: targetUser}})'
+                ) 发消息
 </template>
 
 <script>
 import Header from '../components/Header'
 import InfoCell from '../components/InfoCell'
+import Button from '../components/YButton'
 export default {
     computed: {
         targetUser(){
@@ -26,6 +31,7 @@ export default {
     components: {
         Header,
         InfoCell,
+        Button,
     },
 }
 </script>
